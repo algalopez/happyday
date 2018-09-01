@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+
+   <property resource="application.properties" />
+
+   <appender name="root_console" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %5p %c{36}:%L - %m%n</pattern>
+      </encoder>
+   </appender>
+   <appender name="core_console" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %5p Core.%c{0}:%L - %m%n</pattern>
+      </encoder>
+   </appender>
+   <appender name="webapp_console" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %5p Webapp.%c{0}:%L - %m%n</pattern>
+      </encoder>
+   </appender>
+   <appender name="spring_console" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %5p Spring.%c{0}:%L - %m%n</pattern>
+      </encoder>
+   </appender>
+   <appender name="hibernate_console" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %5p Hibernate.%c{0}:%L - %m%n</pattern>
+      </encoder>
+   </appender>
+
+   
+   <appender name="happyday_trace" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${webapp.log.path}/siav.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+         <fileNamePattern>${webapp.log.path}/siav.%i.log</fileNamePattern>
+         <MinIndex>1</MinIndex>
+         <MaxIndex>21</MaxIndex>
+      </rollingPolicy>
+      <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+         <MaxFileSize>5MB</MaxFileSize>
+      </triggeringPolicy>
+ 
+      <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss} %5p %c{48}:%L - %m%n</pattern>
+      </encoder>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+         <level>TRACE</level>
+         <onMatch>ACCEPT</onMatch>
+      </filter>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+         <level>DEBUG</level>
+         <onMatch>ACCEPT</onMatch>
+      </filter>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+         <level>INFO</level>
+         <onMatch>ACCEPT</onMatch>
+      </filter>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+         <level>WARN</level>
+         <onMatch>ACCEPT</onMatch>
+      </filter>
+      <filter class="ch.qos.logback.classic.filter.LevelFilter">
+         <level>ERROR</level>
+         <onMatch>ACCEPT</onMatch>
+      </filter>
+   </appender>
+   
+   <!-- X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X -->
+   
+   <root level="INFO">
+      <appender-ref ref="root_console"/>
+      <appender-ref ref="happyday_trace"/>
+   </root>
+   <logger name="com.algalopez.happyday.core" level="DEBUG" additivity="false">
+      <appender-ref ref="core_console"/>
+      <appender-ref ref="happyday_trace"/>
+   </logger>
+   <logger name="com.algalopez.happyday.webapp" level="DEBUG" additivity="false">
+      <appender-ref ref="webapp_console"/>
+      <appender-ref ref="happyday_trace"/>
+   </logger>
+   <logger name="org.springframework" level="INFO" additivity="false">
+      <appender-ref ref="spring_console"/>
+      <appender-ref ref="happyday_trace"/>
+   </logger>
+   <logger name="org.hibernate" level="INFO" additivity="false">
+      <appender-ref ref="hibernate_console"/>
+      <appender-ref ref="happyday_trace"/>
+   </logger>
+
+   
+</configuration>

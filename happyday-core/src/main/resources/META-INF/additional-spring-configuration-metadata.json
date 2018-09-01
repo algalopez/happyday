@@ -1,0 +1,67 @@
+{"properties": [
+  {
+    "name": "core.environment",
+    "type": "java.lang.String",
+    "description": "A description for 'core.environment'"
+  },
+  {
+    "name": "core.database.applications.url",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.applications.url'"
+  },
+  {
+    "name": "core.database.dependencycheck.url",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.dependencycheck.url'"
+  },
+  {
+    "name": "core.database.dependencycheck.driver",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.dependencycheck.driver'"
+  },
+  {
+    "name": "core.database.applications.user",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.applications.user'"
+  },
+  {
+    "name": "core.database.applications.pass",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.applications.pass'"
+  },
+  {
+    "name": "core.database.applications.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.applications.dialect'"
+  },
+  {
+    "name": "core.database.happyday.driver",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.happyday.driver'"
+  },
+  {
+    "name": "core.database.happyday.pass",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.happyday.pass'"
+  },
+  {
+    "name": "core.database.happyday.url",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.happyday.url'"
+  },
+  {
+    "name": "core.database.happyday.dialect",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.happyday.dialect'"
+  },
+  {
+    "name": "core.database.happyday.user",
+    "type": "java.lang.String",
+    "description": "A description for 'core.database.happyday.user'"
+  },
+  {
+    "name": "core.log.path",
+    "type": "java.lang.String",
+    "description": "A description for 'core.log.path'"
+  }
+]}
