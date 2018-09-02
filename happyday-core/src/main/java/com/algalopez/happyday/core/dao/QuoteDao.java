@@ -1,36 +1,24 @@
 package com.algalopez.happyday.core.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-
 import com.algalopez.happyday.core.model.QuoteEntity;
 
-@Repository
-public class QuoteDao {
-
-	private final static Logger log = LoggerFactory.getLogger(QuoteDao.class);
-
+/**
+ * Provides access to quotes objects
+ *
+ */
+public interface QuoteDao {
 	
-	@Qualifier(value = "happydayEntityManagerFactory")
-	@PersistenceContext(unitName="happydayPU")
-	@Autowired
-	private EntityManager entityManager;
+	/**
+	 * Get quote specified by id
+	 * @param id quote identifier
+	 * @return {@link QuoteEntity} object
+	 */
+	public QuoteEntity getQuote(Long id);
 	
-	
-	public QuoteEntity getRandomQuote() {
-		log.debug("getRandomQuote()");
-		
+	/**
+	 * Get a random quote
+	 * @return {@link QuoteEntity} object
+	 */
+	public QuoteEntity getRandomQuote();
 
-		QuoteEntity entity = (QuoteEntity) entityManager.find(QuoteEntity.class, 1L);
-		
-		log.debug("getRandomQuote.Entity: {}", entity);
-		
-		return entity;
-	}
 }

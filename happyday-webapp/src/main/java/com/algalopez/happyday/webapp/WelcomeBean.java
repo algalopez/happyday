@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.jsf.FacesContextUtils;
 
-import com.algalopez.happyday.core.service.ExampleService;
+import com.algalopez.happyday.core.dto.QuoteDto;
+import com.algalopez.happyday.core.service.QuoteService;
 
 
 @Named("welcomeBean")
@@ -28,11 +29,11 @@ public class WelcomeBean implements Serializable{
 	private final static Logger log = LoggerFactory.getLogger(WelcomeBean.class);
 	
 	@Autowired
-	private ExampleService exampleService;
+	private QuoteService quoteService;
 	
 	
 	private String testString = "test string";
-	private String testService;
+	private QuoteDto testService;
 	
 	private static ResourceBundle bundle;
 	private String environment;
@@ -58,7 +59,7 @@ public class WelcomeBean implements Serializable{
 		environment = bundle.getString("webapp.environment");
 		log.debug("TESTING LOGGER in {} environment", environment);
 
-		testService = exampleService.example();
+		testService = quoteService.getRandomQuote();
 		log.debug("TESTING CORE: {}", testService);
 		
 	}
