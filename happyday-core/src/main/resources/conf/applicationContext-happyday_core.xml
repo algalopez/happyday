@@ -11,7 +11,9 @@
 
     <context:annotation-config/>
     
-    <context:component-scan base-package="com.algalopez.happyday.core.service, com.algalopez.hayyday.core.dao,
-    com.algalopez.happyday.core.model" />
+    <context:component-scan base-package="
+        com.algalopez.happyday.core.service, 
+        com.algalopez.happyday.core.dao,
+        com.algalopez.happyday.core.model" />
 
 </beans>

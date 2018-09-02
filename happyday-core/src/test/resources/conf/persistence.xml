@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<persistence-unit name="happydayPU">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="hibernate.show_sql" value="false" />
+		</properties>
+		<class>com.algalopez.happyday.core.model.QuoteEntity</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	</persistence-unit>
+
+</persistence>
