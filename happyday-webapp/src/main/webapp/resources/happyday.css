@@ -1,0 +1,63 @@
+@charset "ISO-8859-1";
+
+@font-face{
+font-family: 'GreatVibes';
+src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+font-family: 'Lobster';
+src: url('fonts/Lobster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+font-family: 'Pacifico';
+src: url('fonts/Pacifico-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+/*    background: #E6EDFB; */
+   background-color: #66b3ff;
+   font-family: 'Open Sans', Arial, Helvetica, Sans-serif;
+   width: 100%;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+   color: #fff;
+}
+
+
+#quote {
+    position: absolute;
+    margin-top: -100px;
+    top: 50%;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    line-height: 200px;
+    font-family: 'GreatVibes', 'Open Sans', Arial, Helvetica, Sans-serif;
+    color: #fff;
+    font-size: 2em;
+}
+
+#contact {
+    position: absolute;
+    right: 0px;
+    line-height: 1.2em;
+    text-align: right;
+    bottom: 0px;
+    width: 100%;
+    color: #ddd;
+    font-size: 1.2em;
+}
+#contact a:link, #contact a:visited, #contact a:hover{
+    color: #ddd;
+    text-decoration: none;
+}

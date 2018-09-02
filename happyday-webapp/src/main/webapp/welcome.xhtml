@@ -4,14 +4,22 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
     <h:head>
         <title>Happy Day</title>
+        <link href="resources/happyday.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-       <h1>Hello World!</h1>
-       
-       <h:outputText  value="#{welcomeBean.testString}" /><br></br>
-<!--        <h:outputText value="#{webapp.environment}" /><br></br> -->
-       <h:outputText value="#{msg['test']}" /><br></br>
+
+        <div id="quote">
+            <h:outputText  value="#{welcomeBean.quoteDto.getQuote()}" />
+        </div>
+        <div id="contact">
+            <h:outputText value="#{welcomeBean.buildAppInfo()}" /> <br/>
+            <h:outputLink value="#{welcomeBean.sourcecode}">
+                <h:outputText value="#{welcomeBean.sourcecode}" />
+            </h:outputLink>
+        </div>
+
     </h:body>
 </html>

@@ -22,7 +22,7 @@ import com.algalopez.happyday.core.service.QuoteService;
 @ViewScoped
 public class WelcomeBean implements Serializable{
 
-	/** Utilizado por java para detectar rapidamente que las versiones de este objeto sean iguales */
+	/** Used for fast checking serialization version is the same when deserialization */
 	private static final long serialVersionUID = -2075179750460383596L;
 	
 	/** Class logger */
@@ -32,13 +32,31 @@ public class WelcomeBean implements Serializable{
 	private QuoteService quoteService;
 	
 	
-	private String testString = "test string";
-	private QuoteDto testService;
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	// STATE
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
 	
-	private static ResourceBundle bundle;
+	
+	// Quote Class
+	private QuoteDto quoteDto;
+	
+	// App
+	private String name;
+	private String author;
 	private String environment;
+	private String sourcecode;
+	private String version;
 
-
+	
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	// INITIALIZATION
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	
+	
 	@PostConstruct
 	public void postConstruct() {
 
@@ -46,31 +64,69 @@ public class WelcomeBean implements Serializable{
 				.getAutowireCapableBeanFactory().autowireBean(this);
 		
         try {
-        	bundle = ResourceBundle.getBundle("application");
+        	ResourceBundle bundle = ResourceBundle.getBundle("application");
+        	name = bundle.getString("webapp.name");
+        	author = bundle.getString("webapp.author");
+        	environment = bundle.getString("webapp.environment");
+        	sourcecode = bundle.getString("webapp.sourcecode");
+        	version = bundle.getString("webapp.version");
+
         } catch (MissingResourceException e) {
-        	System.out.println("ERROR");
-        	return;
+        	log.error("postConstruct.Error: Missing properties file");
         } catch (java.lang.NullPointerException e) {
-        	System.out.println("ERROR");
-        	return;
+        	log.error("postConstruct.Error: Error opening properties file");
         }
 		
-		
-		environment = bundle.getString("webapp.environment");
-		log.debug("TESTING LOGGER in {} environment", environment);
+        quoteDto = quoteService.getRandomQuote();
+        
+		log.debug("Debugging {} v{} in {} environment", name, version, environment);		
+	}
 
-		testService = quoteService.getRandomQuote();
-		log.debug("TESTING CORE: {}", testService);
+	
+	
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	// FUNCTIONS
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	
+	public String buildAppInfo() {
+		// HappyDay v1.0.0 (dev) by algalopez
+		StringBuilder builder = new StringBuilder();
+		builder.append(name).append(" v").append(version);
+		builder.append(" (").append(environment).append(") by ").append(author);
 		
+		return builder.toString();
 	}
 	
 	
-	public String getTestString() {
-		return testString;
-	}
+	
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	// GETTERS AND SETTERS
+	// -----------------------------------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------------------------------
+	
+	
+	public QuoteDto getQuoteDto() { return quoteDto; }
+	public void setQuoteDto(QuoteDto quoteDto) { this.quoteDto = quoteDto; }
 
+	public String getName() { return name; }
+	public void setName(String name) { this.name = name; }
 
-	public void setTestString(String testString) {
-		this.testString = testString;
-	}
+	public String getAuthor() { return author; }
+	public void setAuthor(String author) { this.author = author; }
+
+	public String getEnvironment() { return environment; }
+	public void setEnvironment(String environment) { this.environment = environment; }
+
+	public String getSourcecode() { return sourcecode; }
+	public void setSourcecode(String sourcecode) { this.sourcecode = sourcecode; }
+
+	public String getVersion() { return version; }
+	public void setVersion(String version) { this.version = version; }
+
+	public QuoteService getQuoteService() { return quoteService; }
+	public void setQuoteService(QuoteService quoteService) { this.quoteService = quoteService; }
+
 }
