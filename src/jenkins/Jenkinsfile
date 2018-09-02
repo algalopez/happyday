@@ -1,0 +1,59 @@
+pipeline {
+   agent {
+      label 'slave02'
+   }
+   stages {
+      stage('Validate') {
+         steps {
+            echo 'Cleaning and validating'
+            sh 'mvn clean validate'
+         }
+      }
+      stage('Build') {
+         steps {
+            echo 'Installing SIAV'
+            sh 'mvn install -DskipTests -P dev'
+             
+         }
+      }
+      stage('Unit Testing'){
+         steps {
+            echo 'Unit Testing'
+            sh 'mvn -pl happyday-core test -Dtest=com.algalopez.happyday.core.**.*Test'
+         }
+      }
+      stage('Quality Testing'){
+         steps {
+            echo 'Sonarqube Quality Testing'
+            withSonarQubeEnv('Sonar') {
+               sh 'mvn sonar:sonar'
+            }
+         }
+      }
+      stage('Integration Testing') {
+         steps {
+            echo 'Integration Testing'
+         }
+      }
+      stage('Functional Testing') {
+         steps {
+            echo 'Selenium Functional Testing'
+         }
+      }
+      stage('Performance Testing') {
+         steps {
+            echo 'JMeter Performance Testing'
+         }
+      }
+      stage('Deployment') {
+         steps {
+            echo 'Deployment in nexus'
+         }
+      }
+      stage('Tear down') {
+         steps {
+            echo 'Tear down'
+         }
+      }
+   }
+}

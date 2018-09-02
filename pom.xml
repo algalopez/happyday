@@ -12,7 +12,7 @@
     
 	<groupId>com.algalopez.happyday</groupId>
 	<artifactId>happyday</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 	<packaging>pom</packaging>
 
 	<name>happyday</name>
@@ -35,7 +35,7 @@
             <dependency>
                 <groupId>com.algalopez.happyday.core</groupId>
                 <artifactId>happyday-core</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.0-RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
