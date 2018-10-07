@@ -1,3 +1,4 @@
 *
 !.gitignore
-!.environment-dev.properties
+!environment-dev.properties
+!environment-pre.properties
