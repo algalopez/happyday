@@ -51,15 +51,25 @@
         </dependency>
 
 	</dependencies>
-	
-	   
-    <profiles>
-      <profile>
-         <id>dev</id>
-         <activation><activeByDefault>true</activeByDefault></activation>
-         <properties><env>dev</env></properties>
-      </profile>
-   </profiles>
+
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>dev</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>pre</id>
+			<properties>
+				<env>pre</env>
+			</properties>
+		</profile>
+	</profiles>
     
    <build>
       <filters>

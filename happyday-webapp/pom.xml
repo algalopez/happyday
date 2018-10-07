@@ -12,15 +12,15 @@
         <version>1.0.0-RELEASE</version>
     </parent>
   
-  
     <groupId>com.algalopez.happyday.webapp</groupId>
     <artifactId>happyday-webapp</artifactId>
-    <packaging>war</packaging>
     <name>happyday-webapp</name>
+    <packaging>war</packaging>
 
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
@@ -135,8 +135,18 @@
 	<profiles>
 		<profile>
 			<id>dev</id>
-			<activation><activeByDefault>true</activeByDefault></activation>
-			<properties><env>dev</env></properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>dev</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>pre</id>
+			<properties>
+				<env>pre</env>
+			</properties>
 		</profile>
 	</profiles>
         
