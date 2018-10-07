@@ -10,14 +10,14 @@ pipeline {
       stage('Build') {
          steps {
             echo 'Installing SIAV'
-            sh 'mvn install -DskipTests -P dev'
+            sh 'mvn install -P pre'
              
          }
       }
       stage('Unit Testing'){
          steps {
             echo 'Unit Testing'
-            sh 'mvn -pl happyday-core test -Dtest=com.algalopez.happyday.core.**.*Test'
+            // sh 'mvn -pl happyday-core test -Dtest=com.algalopez.happyday.core.**.*Test'
          }
       }
       stage('Quality Testing'){
